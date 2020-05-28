@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import NavBar from './components/NavBar/NavBar';
+import style from 'styled-components';
 
-function App() {
+const Main = style.main`
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ `;
+
+const H1 = style.h1`
+  font-family: Raleway;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: normal;
+
+
+`;
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavBar title="Mio" />
+      <Main>
+        <H1>Select and book</H1>
+      </Main>
     </div>
   );
-}
+};
 
 export default App;

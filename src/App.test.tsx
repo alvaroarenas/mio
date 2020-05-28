@@ -1,9 +1,14 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it('has a nav bar', () => {
+  render(<App />);
+  screen.getByRole('heading', { name: 'Mio' });
+});
+
+it('has a title', () => {
+  render(<App />);
+  const mainContainer = screen.getByRole('main');
+  expect(mainContainer).toHaveTextContent('Select and book');
 });
