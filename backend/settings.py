@@ -101,12 +101,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if on_heroku:
-    REST_FRAMEWORK = {
-        'DEFAULT_RENDERER_CLASSES': (
-            'rest_framework.renderers.JSONRenderer',
-        )
-    }
+# if on_heroku:
+#     REST_FRAMEWORK = {
+#         'DEFAULT_RENDERER_CLASSES': (
+#             'rest_framework.renderers.JSONRenderer',
+#         )
+#     }
 
 ROOT_URLCONF = 'backend.urls'
 
