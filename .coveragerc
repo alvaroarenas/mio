@@ -1,0 +1,11 @@
+[run]
+command_line = manage.py test
+omit = 
+  */node_modules/*
+  */mio-venv/*
+  */migrations/*
+[paths]
+source = .
+
+[report]
+show_missing = True

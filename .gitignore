@@ -24,3 +24,7 @@ yarn-error.log*
 
 # Python virtual environment
 /mio-venv
+
+# Coverage report
+.coverage
+*/__pycache__/*
