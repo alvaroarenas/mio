@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from '@reach/router';
 
 const Button = styled.button`
   background: #ff6b00;
@@ -19,6 +20,11 @@ const Button = styled.button`
   justify-content: center;
 
   padding: 0px;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
 `;
 const Icon = styled.div`
   margin: 0px;
@@ -38,8 +44,10 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ label, icon }) => {
 
   return (
     <Button>
-      {image}
-      {label}
+      <Link to={`products/${label}`}>
+        {image}
+        {label}
+      </Link>
     </Button>
   );
 };

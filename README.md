@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Testing
+
+`coverage run --source='.' --omit='mio-venv/*' manage.py test`
+
 ## Available Scripts
 
 In the project directory, you can run:

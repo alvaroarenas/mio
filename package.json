@@ -4,6 +4,7 @@
   "private": true,
   "license": "Copyright Alvaro Arenas 2020",
   "dependencies": {
+    "@reach/router": "^1.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -41,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@types/reach__router": "^1.3.5",
     "jest-styled-components": "^7.0.2",
     "prettier": "^2.0.5"
   },
