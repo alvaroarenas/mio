@@ -8,10 +8,17 @@ class Image(models.Model):
     original_url = models.URLField()
 
 
+class ProductType(models.Model):
+    name = models.CharField(max_length=80)
+    static_dir = models.CharField(max_length=100)
+
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=300)
     image = models.ForeignKey(Image, null=True, on_delete=models.SET_NULL)
+    product_type = models.ForeignKey(
+        ProductType, null=True, on_delete=models.CASCADE)
 
     @property
     def imagePath(self):

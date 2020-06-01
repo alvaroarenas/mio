@@ -1,5 +1,5 @@
 from django.test import TestCase
-from mioserver.models import Image, Product
+from mioserver.models import Image, Product, ProductType
 
 
 class ImageTest(TestCase):
@@ -23,10 +23,13 @@ class ProductTest(TestCase):
             filename='claudiaSchieffer.jpg',
             original_url='https://example.com/claudia.jpg')
 
+        carType = ProductType.objects.create(name='Car', static_dir='car')
+
         Product.objects.create(
             name='Awesome car',
             description="This is an awesome car",
-            image=image
+            image=image,
+            type=carType
         )
 
     def test_it_has_all_fields(self):
@@ -39,3 +42,10 @@ class ProductTest(TestCase):
         product = Product.objects.get(name='Awesome car')
         product.image = None
         self.assertEqual(product.imagePath, '')
+
+
+class ProductTypeTest(TestCase):
+    def test_it_has_all_fields(self):
+        carType = ProductType.objects.create(name='Car', static_dir='car')
+        self.assertEqual(carType.name, 'Car')
+        self.assertEqual(carType.static_dir, 'car')
