@@ -4,6 +4,8 @@ omit =
   */node_modules/*
   */mio-venv/*
   */migrations/*
+  manage.py
+
 [paths]
 source = .
 
