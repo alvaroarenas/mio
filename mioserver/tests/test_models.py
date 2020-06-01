@@ -15,6 +15,10 @@ class ImageTest(TestCase):
         self.assertEqual(image.filename, 'claudiaSchieffer.jpg')
         self.assertEqual(image.original_url, 'https://example.com/claudia.jpg')
 
+    def test_str_prints_the_filename(self):
+        image = Image.objects.get(author='Claudia Schieffer')
+        self.assertEqual(image.__str__(), 'claudiaSchieffer.jpg')
+
 
 class ProductTest(TestCase):
     def setUp(self):
@@ -29,7 +33,7 @@ class ProductTest(TestCase):
             name='Awesome car',
             description="This is an awesome car",
             image=image,
-            type=carType
+            product_type=carType
         )
 
     def test_it_has_all_fields(self):
@@ -49,3 +53,7 @@ class ProductTypeTest(TestCase):
         carType = ProductType.objects.create(name='Car', static_dir='car')
         self.assertEqual(carType.name, 'Car')
         self.assertEqual(carType.static_dir, 'car')
+
+    def test_str_prints_the_filename(self):
+        carType = ProductType.objects.create(name='Car', static_dir='car')
+        self.assertEqual(carType.__str__(), 'Car')

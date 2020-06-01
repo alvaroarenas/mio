@@ -7,10 +7,16 @@ class Image(models.Model):
     filename = models.URLField()
     original_url = models.URLField()
 
+    def __str__(self):
+        return self.filename
+
 
 class ProductType(models.Model):
     name = models.CharField(max_length=80)
     static_dir = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
