@@ -181,7 +181,11 @@ DATABASES['default']['OPTIONS'] = {'sslmode': 'prefer'}
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
 
 # Place static in the same location as webpack build files
 STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'build', 'static', 'media')
+
 STATICFILES_DIRS = []

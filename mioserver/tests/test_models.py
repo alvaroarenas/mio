@@ -1,12 +1,27 @@
 from django.test import TestCase
 from mioserver.models import Image, Product, ProductType
+from django.db import models
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from io import BytesIO
+
+# import pytest
+# from mixer.backend.django import mixer
+# pytestmark = pytest.mark.django_db
 
 
 class ImageTest(TestCase):
     def setUp(self):
+        im_io = BytesIO()
+        top_model_type = ProductType.objects.create(
+            name='TopModel', static_dir='model')
         Image.objects.create(
             author='Claudia Schieffer',
-            filename='claudiaSchieffer.jpg',
+
+            image_file=InMemoryUploadedFile(
+                im_io, None, 'claudiaSchieffer.jpg', 'image/jpeg', len(im_io.getvalue()), None),
+
+            image_product_type=top_model_type,
+            nickname='hun7er',
             original_url='https://example.com/claudia.jpg')
 
     def test_it_has_model_fields(self):
@@ -14,6 +29,7 @@ class ImageTest(TestCase):
         self.assertEqual(image.author, 'Claudia Schieffer')
         self.assertEqual(image.filename, 'claudiaSchieffer.jpg')
         self.assertEqual(image.original_url, 'https://example.com/claudia.jpg')
+        self.assertEqual(image.nickname, 'hun7er')
 
     def test_str_prints_the_filename(self):
         image = Image.objects.get(author='Claudia Schieffer')
@@ -22,9 +38,14 @@ class ImageTest(TestCase):
 
 class ProductTest(TestCase):
     def setUp(self):
+        im_io = BytesIO()
+        top_model_type = ProductType.objects.create(
+            name='TopModel', static_dir='model')
         image = Image.objects.create(
             author='Claudia Schieffer',
-            filename='claudiaSchieffer.jpg',
+            image_file=InMemoryUploadedFile(
+                im_io, None, 'claudiaSchieffer.jpg', 'image/jpeg', len(im_io.getvalue()), None),
+            image_product_type=top_model_type,
             original_url='https://example.com/claudia.jpg')
 
         carType = ProductType.objects.create(name='Car', static_dir='car')

@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Tests",
+      "type": "python",
+      "request": "test",
+      // "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Python: mioserver test",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["--no-cov"]
+    }
+  ]
+}
