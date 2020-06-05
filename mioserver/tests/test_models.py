@@ -27,13 +27,13 @@ class ImageTest(TestCase):
     def test_it_has_model_fields(self):
         image = Image.objects.get(author='Claudia Schieffer')
         self.assertEqual(image.author, 'Claudia Schieffer')
-        self.assertEqual(image.filename, 'claudiaSchieffer.jpg')
+        self.assertIn('claudiaSchieffer', image.filename)
         self.assertEqual(image.original_url, 'https://example.com/claudia.jpg')
         self.assertEqual(image.nickname, 'hun7er')
 
     def test_str_prints_the_filename(self):
         image = Image.objects.get(author='Claudia Schieffer')
-        self.assertEqual(image.__str__(), 'claudiaSchieffer.jpg')
+        self.assertIn('claudiaSchieffer', image.__str__())
 
 
 class ProductTest(TestCase):
@@ -61,12 +61,16 @@ class ProductTest(TestCase):
         product = Product.objects.get(name='Awesome car')
         self.assertEqual('Awesome car', product.name)
         self.assertEqual(product.description, 'This is an awesome car')
-        self.assertEqual(product.imagePath, 'claudiaSchieffer.jpg')
+        self.assertIn('claudiaSchieffer', product.imagePath)
 
     def test_it_has_imagePath_empty_when_null_image(self):
         product = Product.objects.get(name='Awesome car')
         product.image = None
         self.assertEqual(product.imagePath, '')
+
+    def test_product_lists_name(self):
+        product = Product.objects.get(name='Awesome car')
+        self.assertEqual(product.__str__(), 'Awesome car')
 
 
 class ProductTypeTest(TestCase):

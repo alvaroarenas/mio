@@ -3,12 +3,6 @@ from django.db import models
 from django.core.files.storage import FileSystemStorage
 
 
-class OverwriteStorage(FileSystemStorage):
-    def get_available_name(self, name, max_length=None):
-        self.delete(name)
-        return name
-
-
 class ProductType(models.Model):
     name = models.CharField(max_length=80)
     static_dir = models.CharField(max_length=100)
@@ -17,16 +11,11 @@ class ProductType(models.Model):
         return self.name
 
 
-def get_upload_to(instance, filename):
-    return path.join(instance.image_product_type.static_dir.__str__(), filename)
-
-
 class Image(models.Model):
     author = models.CharField(max_length=100)
     image_product_type = models.ForeignKey(
         ProductType, on_delete=models.DO_NOTHING)
-    image_file = models.ImageField(
-        upload_to=get_upload_to, null=True, storage=OverwriteStorage())
+    image_file = models.ImageField()
     original_url = models.URLField()
     nickname = models.CharField(max_length=60, null=True)
 
@@ -51,3 +40,6 @@ class Product(models.Model):
             return self.image.filename
 
         return ''
+
+    def __str__(self):
+        return self.name
