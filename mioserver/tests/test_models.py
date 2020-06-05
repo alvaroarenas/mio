@@ -3,12 +3,14 @@ from mioserver.models import Image, Product, ProductType
 from django.db import models
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from io import BytesIO
+from unittest.mock import patch
 
 # import pytest
 # from mixer.backend.django import mixer
 # pytestmark = pytest.mark.django_db
 
 
+# @patch('storages.backends.s3boto3.S3Boto3Storage')
 class ImageTest(TestCase):
     def setUp(self):
         im_io = BytesIO()

@@ -18,9 +18,15 @@ class ImageUrlField(serializers.RelatedField):
         return request.build_absolute_uri(url)
 
 
+class ProductTypeField(serializers.RelatedField):
+    def to_representation(self, instance):
+        return instance.name
+
+
 class ProductSerializer(serializers.ModelSerializer):
     image = ImageUrlField(read_only=True)
+    product_type = ProductTypeField(read_only=True)
 
     class Meta:
         model = Product
-        fields = ('id', 'name', 'description', 'image')
+        fields = ('id', 'name', 'description', 'image', 'product_type')

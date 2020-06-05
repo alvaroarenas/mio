@@ -32,7 +32,7 @@ class Product(models.Model):
     description = models.CharField(max_length=300)
     image = models.ForeignKey(Image, null=True, on_delete=models.SET_NULL)
     product_type = models.ForeignKey(
-        ProductType, null=True, on_delete=models.CASCADE)
+        ProductType, null=True, on_delete=models.SET_NULL)
 
     @property
     def imagePath(self):

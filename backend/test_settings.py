@@ -8,3 +8,4 @@ DATABASES = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'

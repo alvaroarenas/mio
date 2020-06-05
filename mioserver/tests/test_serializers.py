@@ -44,13 +44,13 @@ class SerializerTest(TestCase):
     def test_fields_product(self):
         self.assertEqual(
             set(self.serializedProduct.data),
-            set(['id', 'name', 'description', 'image']))
+            set(['id', 'name', 'description', 'image', 'product_type']))
 
     def test_imagePath_content(self):
-        self.assertIn('https://mioapp.s3.amazonaws.com/media/claudiaSchieffer',
+        self.assertIn('claudiaSchieffer',
                       self.serializedProduct.data['image']
                       )
 
     def test_imageSerializer_imageUrl(self):
-        self.assertIn('https://mioapp.s3.amazonaws.com/media/claudiaSchieffer',
+        self.assertIn('claudiaSchieffer',
                       self.serializedImage.data['image_file'])
