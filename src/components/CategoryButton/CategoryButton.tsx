@@ -19,7 +19,8 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-  padding: 0px;
+  padding: 1px;
+  border-color: white;
 
   a {
     text-decoration: none;
@@ -36,7 +37,11 @@ type CategoryButtonProps = {
   icon?: string;
 };
 
-const CategoryButton: React.FC<CategoryButtonProps> = ({ category, label, icon }) => {
+const CategoryButton: React.FC<CategoryButtonProps> = ({
+  category,
+  label,
+  icon,
+}) => {
   const image = icon ? (
     <Icon>
       <img src={icon} alt={label} />
