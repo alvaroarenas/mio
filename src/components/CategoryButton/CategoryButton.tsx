@@ -31,11 +31,12 @@ const Icon = styled.div`
 `;
 
 type CategoryButtonProps = {
+  category: string;
   label: string;
   icon?: string;
 };
 
-const CategoryButton: React.FC<CategoryButtonProps> = ({ label, icon }) => {
+const CategoryButton: React.FC<CategoryButtonProps> = ({ category, label, icon }) => {
   const image = icon ? (
     <Icon>
       <img src={icon} alt={label} />
@@ -44,7 +45,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({ label, icon }) => {
 
   return (
     <Button>
-      <Link to={`products/${label}`}>
+      <Link to={`products/${category}`}>
         {image}
         {label}
       </Link>

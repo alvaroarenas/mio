@@ -51,10 +51,14 @@ const CategorySelector: React.FC<RouteComponentProps> = (
       </TitleSection>
 
       <CategoryList>
-        <CategoryButton label={'Cars'} icon={carIcon} />
-        <CategoryButton label={'Houses'} icon={houseIcon} />
-        <CategoryButton label={'Tools'} icon={cameraIcon} />
-        <CategoryButton label={'Rockets'} icon={rocketIcon} />
+        <CategoryButton category={'Car'} label={'Cars'} icon={carIcon} />
+        <CategoryButton category={'House'} label={'Houses'} icon={houseIcon} />
+        <CategoryButton category={'Tool'} label={'Tools'} icon={cameraIcon} />
+        <CategoryButton
+          category={'rocket'}
+          label={'Rockets'}
+          icon={rocketIcon}
+        />
       </CategoryList>
     </Main>
   );

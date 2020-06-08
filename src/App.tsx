@@ -1,15 +1,8 @@
 import React from 'react';
 import NavBar from './components/NavBar';
 import CategorySelector from './components/CategorySelector';
-import { Router, RouteComponentProps } from '@reach/router';
-
-interface ProductListerProps extends RouteComponentProps {
-  productId?: string;
-}
-
-const ProductLister: React.FC<ProductListerProps> = (props) => {
-  return <div>{props.productId}</div>;
-};
+import ProductLister from './components/ProductLister';
+import { Router } from '@reach/router';
 
 const App: React.FC = () => {
   return (
@@ -17,7 +10,7 @@ const App: React.FC = () => {
       <NavBar title="Mio" />
       <Router>
         <CategorySelector path="/" />
-        <ProductLister path="/products/:productId" />
+        <ProductLister path="/products/:category" />
       </Router>
     </div>
   );
