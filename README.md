@@ -2,11 +2,11 @@ You can se a live demo for this app at [https://mio-app.herokuapp.com](https://m
 
 ## Intalling
 
-`pip install requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-yarn build
-python mange.py runserver`
+`pip install requirements.txt`
+`python manage.py migrate`
+`python manage.py createsuperuser`
+`yarn build`
+`python mange.py runserver`
 
 Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
 You will need to add some data. For that use http://localhost:8000/admin/
